@@ -1,16 +1,13 @@
 package com.example.rupizza;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
-import android.util.Log;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 public class MainActivity extends Activity implements RecyclerViewInterface {
 
@@ -23,7 +20,9 @@ public class MainActivity extends Activity implements RecyclerViewInterface {
             R.drawable.chicagomeatzza,
             R.drawable.newyorkmeatzza,
             R.drawable.chicagobuildyourown,
-            R.drawable.newyorkbuildyourown
+            R.drawable.newyorkbuildyourown,
+            R.drawable.blackimage,
+            R.drawable.blackimage
     };
 
     @Override
@@ -54,6 +53,15 @@ public class MainActivity extends Activity implements RecyclerViewInterface {
 
     @Override
     public void onItemClick(int position) {
-        Log.i("MAIN", "Hello World!" + position);
+
+        if(position < this.pizzaTypes.size() - 2) { // Only the available pizza options.
+            PizzasModel selectedPizza = this.pizzaTypes.get(position);
+
+            Intent intent = new Intent(this, OrderView.class);
+            intent.putExtra("pizzaname", selectedPizza.getPizzaName());
+            startActivity(intent);
+        }
+
+
     }
 }

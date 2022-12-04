@@ -1,7 +1,25 @@
 <resources>
     <string name="app_name">RU Pizza</string>
     <string name="hello_world">Hello World!</string>
+    <string name="size_description">Pizza Size</string>
+    <string name="pizza_title">Pizza Name</string>
 
+    <!-- The Toppings. -->
+    <string name="sausage">Sausage</string>
+    <string name="pepperoni">Pepperoni</string>
+    <string name="greenpepper">Green Pepper</string>
+    <string name="onion">Onion</string>
+    <string name="mushroom">Mushroom</string>
+    <string name="bbqchicken">BBQ Chicken</string>
+    <string name="provolone">Provolone</string>
+    <string name="cheddar">Cheddar</string>
+    <string name="beef">Beef</string>
+    <string name="ham">Ham</string>
+    <string name="spinach">Spinach</string>
+    <string name="pineapple">Pineapple</string>
+    <string name="olives">Olives</string>
+    <string name="submit_order">Submit Order</string>
+    <string name="order_total">Order Total</string>
 
 
 </resources>
