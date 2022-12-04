@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">RU Pizza</string>
+    <string name="hello_world">Hello World!</string>
+
+
+
 </resources>

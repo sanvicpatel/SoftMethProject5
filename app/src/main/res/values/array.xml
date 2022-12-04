@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pizzas">
+        <item>Chicago Style Deluxe</item>
+        <item>New York Deluxe</item>
+        <item>Chicago BBQ Chicken</item>
+        <item>New York BBQ Chicken</item>
+        <item>Chicago Meatzza</item>
+        <item>New York Meatzza</item>
+        <item>Chicago Build Your Own</item>
+        <item>New York Build Your Own</item>
+    </string-array>
+</resources>
