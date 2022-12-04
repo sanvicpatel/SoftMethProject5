@@ -30,10 +30,13 @@ public class BuildYourOwn extends Pizza {
         switch (this.getSize()) {
             case SMALL:
                 v += SMALL_PRICE;
+                break;
             case MEDIUM:
                 v += MEDIUM_PRICE;
+                break;
             case LARGE:
                 v += LARGE_PRICE;
+                break;
         }
         return v;
     }

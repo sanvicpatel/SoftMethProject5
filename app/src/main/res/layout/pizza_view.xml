@@ -43,6 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:onClick="manageButtons"
                 android:text="@string/sausage" />
 
             <CheckBox
@@ -51,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:onClick="manageButtons"
                 android:text="@string/pepperoni" />
 
             <CheckBox
@@ -59,6 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:onClick="manageButtons"
                 android:text="@string/greenpepper" />
         </LinearLayout>
 
@@ -73,6 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:onClick="manageButtons"
                 android:text="@string/onion" />
 
             <CheckBox
@@ -81,6 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:onClick="manageButtons"
                 android:text="@string/mushroom" />
 
             <CheckBox
@@ -89,6 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:onClick="manageButtons"
                 android:text="@string/bbqchicken" />
         </LinearLayout>
 
@@ -103,6 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:onClick="manageButtons"
                 android:text="@string/provolone" />
 
             <CheckBox
@@ -111,6 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:onClick="manageButtons"
                 android:text="@string/cheddar" />
 
             <CheckBox
@@ -119,6 +127,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:onClick="manageButtons"
                 android:text="@string/beef" />
         </LinearLayout>
 
@@ -133,6 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:onClick="manageButtons"
                 android:text="@string/ham" />
 
             <CheckBox
@@ -141,6 +151,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:onClick="manageButtons"
                 android:text="@string/spinach" />
 
             <CheckBox
@@ -149,6 +160,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:onClick="manageButtons"
                 android:text="@string/pineapple" />
         </LinearLayout>
 
@@ -157,6 +169,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:onClick="manageButtons"
             android:text="@string/olives" />
 
         <TextView
