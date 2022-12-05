@@ -50,7 +50,6 @@ public class MainActivity extends Activity implements RecyclerViewInterface {
 
     }
 
-
     @Override
     public void onItemClick(int position) {
 
