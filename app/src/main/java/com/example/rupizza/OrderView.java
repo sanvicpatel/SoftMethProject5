@@ -181,7 +181,12 @@ public class OrderView extends Activity {
     }
 
     public void submitOrder(View view) {
-        Toast.makeText(view.getContext(), "Placed Order!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(view.getContext(), "Added Pizza To Order!", Toast.LENGTH_SHORT).show();
+
+        if(Constants.currentOrder == null) {
+            Constants.currentOrder = new Order();
+            Constants.currentOrder.add(pizza);
+        }
     }
 
 }
