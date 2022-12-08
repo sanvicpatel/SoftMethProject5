@@ -69,7 +69,6 @@ public class CurrentOrderActivity extends Activity  {
 
     private void updateOrder() {
 
-
         Log.e("UpdateOrder", Constants.currentOrder.getOrderNumber() + "");
 
         TextView orderNumDisplay = (TextView) findViewById(R.id.orderNumberPH);
@@ -79,12 +78,13 @@ public class CurrentOrderActivity extends Activity  {
 
         TextView subtotalDisplay = (TextView) findViewById(R.id.subtotalPlaceHolder);
         subtotalDisplay.setText(Constants.currentOrder.getOrderSubTotal());
-//
+
         TextView salesTaxDisplay = (TextView) findViewById(R.id.salesTaxPlaceHolder);
         salesTaxDisplay.setText(Constants.currentOrder.getSalesTax());
-//
+
         TextView orderTotalDisplay = (TextView) findViewById(R.id.orderTotalPlaceHolder);
         orderTotalDisplay.setText(Constants.currentOrder.getOrderTotal());
+
     }
 
 
