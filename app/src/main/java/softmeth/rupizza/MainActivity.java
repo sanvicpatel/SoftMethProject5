@@ -92,16 +92,17 @@ public class MainActivity extends Activity implements RecyclerViewInterface {
 
            } else {
                Intent intent = new Intent(this, CurrentOrderActivity.class);
-               Toast.makeText(context, "coming here", Toast.LENGTH_SHORT).show();
                startActivity(intent);
            }
         }
 
         else {
-            Intent intent = new Intent(this, StoreOrderActivity.class);
-            startActivity(intent);
+            if(Constants.orders == null || Constants.orders.getOrderIDList().size() == 0) {
+                Toast.makeText(getApplicationContext(), "No Orders to Display!", Toast.LENGTH_SHORT).show();
+            } else {
+                Intent intent = new Intent(this, StoreOrderActivity.class);
+                startActivity(intent);
+            }
         }
-
-
     }
 }
