@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#204321"
     tools:layout_gravity="center">
 
     <LinearLayout
@@ -18,6 +19,7 @@
             android:id="@+id/pizza_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="serif"
             android:gravity="center"
             android:text="@string/pizza_title"
             android:textSize="60sp" />
@@ -177,7 +179,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/recycler_margin"
-            android:fontFamily="monospace"
+            android:fontFamily="serif"
             android:text="@string/order_total"
             android:textSize="34sp" />
 

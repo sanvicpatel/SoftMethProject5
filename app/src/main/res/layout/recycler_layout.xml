@@ -9,6 +9,11 @@
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="-60dp"
+        android:background="#BC2121"
+        android:backgroundTintMode="add"
+        android:outlineProvider="none"
+        app:cardBackgroundColor="#00255E27"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,13 +22,14 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#009688"
+            android:backgroundTint="#00DC9690"
             android:foregroundGravity="center">
 
             <ImageView
                 android:id="@+id/pizza_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginStart="32dp"
                 android:contentDescription="@string/hello_world"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -33,11 +39,19 @@
                 android:id="@+id/pizza_name"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:fontFamily="serif"
                 android:gravity="center|center_vertical"
+                android:overScrollMode="always"
                 android:text="@string/hello_world"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.269"
                 app:layout_constraintStart_toEndOf="@+id/pizza_image"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
