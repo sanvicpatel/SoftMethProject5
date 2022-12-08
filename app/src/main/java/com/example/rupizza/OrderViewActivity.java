@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class OrderView extends Activity {
+public class OrderViewActivity extends Activity {
 
     Intent intent;
     TextView pizzaName, orderTotal;
@@ -185,8 +185,10 @@ public class OrderView extends Activity {
 
         if(Constants.currentOrder == null) {
             Constants.currentOrder = new Order();
-            Constants.currentOrder.add(pizza);
+            Toast.makeText(view.getContext(), "Created new order", Toast.LENGTH_SHORT).show();
         }
+
+        Constants.currentOrder.add(pizza);
     }
 
 }

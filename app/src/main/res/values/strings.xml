@@ -22,6 +22,11 @@
 
     <string name="submit_order">Submit Order</string>
     <string name="order_total">Order Total</string>
+    <string name="ordernumberplace">orderNumberPlace</string>
+    <string name="subtotalplace">subtotalPlace</string>
+    <string name="salestaxplace">salesTaxPlace</string>
+    <string name="ordertotalplace">orderTotalPlace</string>
+    <string name="currentOrderActivityName">Current Order</string>
 
 
 </resources>
