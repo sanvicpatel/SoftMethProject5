@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RUPizza"
         tools:targetApi="31">
-        <activity android:name=".OrderViewActivity" android:exported="true"></activity>
+        <activity android:name=".OrderViewActivity" android:label="Order View" android:parentActivityName=".MainActivity" android:exported="true"></activity>
         <activity android:name=".CurrentOrderActivity" android:label="@string/currentOrderActivityName" android:parentActivityName=".MainActivity"></activity>
         <activity android:name=".StoreOrderActivity" android:label="@string/storeOrderActivityName" android:parentActivityName=".MainActivity"></activity>
         <activity android:name=".MainActivity"
