@@ -139,26 +139,6 @@ public abstract class Pizza implements Customizeable {
         String style = this.getStyle(this.crust);
         return this.getName() + " (" + style + ") " + getToppings() + this.size
                 + " $" + String.format("%.2f",
-                ((int)(this.price() * 100) / 100.0));
+                ((int)(this.price() * Constants.ROUNDER) / Constants.ROUNDER));
     }
-
-    /**
-     * Get the image name for the pizza.
-     *
-     * @return The Image Name of the current pizza.
-     */
-    public String getImageName() {
-        if(this instanceof Deluxe) {
-            return "deluxe.png";
-        } else if(this instanceof Meatzza) {
-            return "meatzza.png";
-        } else if(this instanceof BBQChicken) {
-            return "bbqchicken.png";
-        } else {
-            return "buildyourown.png";
-        }
-    }
-
-
-
 }

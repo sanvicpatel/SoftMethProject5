@@ -34,14 +34,48 @@ public class OrderViewActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.pizza_view);
-
-        // Title
         intent = getIntent();
         pizzaName = (TextView) findViewById(R.id.pizza_name);
 
-        // Toppings
+        addToppings();
+        pizzaSize = (Spinner) findViewById(R.id.pizza_size);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.sizes, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        pizzaSize.setAdapter(adapter);
+        pizzaSize.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            /**
+             * On item selected event handler
+             * @param adapterView adapterView
+             * @param view Size
+             * @param i position
+             * @param l id
+             */
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                changeSize();
+            }
+            /**
+             * On nothing selected event handler
+             * @param adapterView adapterView
+             */
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                changeSize();
+            }
+        });
+
+        orderTotal = (TextView) findViewById(R.id.orderTotal);
+        setupPizzaName();
+        setupToppings();
+        createPizza();
+    }
+
+    /**
+     * Helper method to add toppings
+     */
+    private void addToppings() {
         toppings.add((CheckBox) findViewById(R.id.sausage)); // 0
         toppings.add((CheckBox) findViewById(R.id.pepperoni)); // 1
         toppings.add((CheckBox) findViewById(R.id.greenpepper)); // 2
@@ -55,32 +89,6 @@ public class OrderViewActivity extends Activity {
         toppings.add((CheckBox) findViewById(R.id.spinach)); // 10
         toppings.add((CheckBox) findViewById(R.id.pineapple)); // 11
         toppings.add((CheckBox) findViewById(R.id.olives)); // 12
-
-
-        // Drop Down For Size
-        pizzaSize = (Spinner) findViewById(R.id.pizza_size);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sizes, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        pizzaSize.setAdapter(adapter);
-        pizzaSize.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                changeSize();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                changeSize();
-            }
-        });
-
-        // Order Total
-        orderTotal = (TextView) findViewById(R.id.orderTotal);
-
-        setupPizzaName();
-        setupToppings();
-        createPizza();
-
     }
 
     /**
@@ -92,7 +100,7 @@ public class OrderViewActivity extends Activity {
     }
 
     /**
-     * Setup the toppinigs checkboxes.
+     * Setup the toppings checkboxes.
      */
     private void setupToppings() {
         for(CheckBox topping: toppings) {
@@ -100,27 +108,33 @@ public class OrderViewActivity extends Activity {
         }
         String name = pizzaName.getText().toString();
         if(name.equals("Chicago Style Deluxe")) {
-            for(int i: new int[]{0, 1, 2, 3, 4}) {
+            for(int i: new int[]{Constants.SAUSAGE, Constants.PEPPERONI, Constants.GREENPEPPER,
+                    Constants.ONION, Constants.MUSHROOM}) {
                 toppings.get(i).setChecked(true);
             }
         } else if(name.equals("New York Deluxe")) {
-            for(int i: new int[]{0, 1, 2, 3, 4}) {
+            for(int i: new int[]{Constants.SAUSAGE, Constants.PEPPERONI,  Constants.GREENPEPPER,
+                    Constants.ONION, Constants.MUSHROOM}) {
                 toppings.get(i).setChecked(true);
             }
         } else if(name.equals("Chicago BBQ Chicken")) {
-            for(int i: new int[]{5, 2, 6, 7}) {
+            for(int i: new int[]{Constants.BBQCHICKEN, Constants.GREENPEPPER, Constants.PROVOLONE,
+                    Constants.CHEDDAR}) {
                 toppings.get(i).setChecked(true);
             }
         } else if(name.equals("New York BBQ Chicken")) {
-            for(int i: new int[]{5, 2, 6, 7}) {
+            for(int i: new int[]{Constants.BBQCHICKEN, Constants.GREENPEPPER, Constants.PROVOLONE,
+                    Constants.CHEDDAR}) {
                 toppings.get(i).setChecked(true);
             }
         } else if(name.equals("Chicago Meatzza")) {
-            for(int i: new int[]{0, 1, 8, 9}) {
+            for(int i: new int[]{Constants.SAUSAGE, Constants.PEPPERONI, Constants.BEEF,
+                    Constants.HAM}) {
                 toppings.get(i).setChecked(true);
             }
         } else if(name.equals("New York Meatzza")) {
-            for(int i: new int[]{0, 1, 8, 9}) {
+            for(int i: new int[]{Constants.SAUSAGE, Constants.PEPPERONI, Constants.BEEF,
+                    Constants.HAM}) {
                 toppings.get(i).setChecked(true);
             }
         } else if(name.equals("Chicago Build Your Own") || name.equals("New York Build Your Own")) {
@@ -136,12 +150,12 @@ public class OrderViewActivity extends Activity {
      * @param view The view.
      */
     public void manageButtons(View view) {
-        int numSelected = 0;
+        int numSelected = Constants.EMPTY;
         for(CheckBox topping: toppings) {
             if (topping.isChecked())
                 numSelected++;
         }
-        if(numSelected >= 7) {
+        if(numSelected >= Constants.MAX_TOPPINGS) {
             for (CheckBox topping : toppings)
                 if (!topping.isChecked())
                     topping.setClickable(false);
@@ -193,17 +207,21 @@ public class OrderViewActivity extends Activity {
                 break;
         }
         pizza.setSize(size);
-        orderTotal.setText("$" + pizza.getSubtotal());
+        double total = pizza.getSubtotal();
+        total = ((int)(total * Constants.ROUNDER)) / Constants.ROUNDER;
+        orderTotal.setText(String.format("$%s", total));
     }
 
     /**
      * Enable only the selected toppings.
      */
     private void selectedToppings() {
-        if(pizzaName.getText().toString().equals("Chicago Build Your Own") || pizzaName.getText().toString().equals("New York Build Your Own") ) {
+        if(pizzaName.getText().toString().equals("Chicago Build Your Own")
+                || pizzaName.getText().toString().equals("New York Build Your Own") ) {
             for (CheckBox topping : toppings) {
                 if (topping.isChecked()) {
-                    pizza.add(Topping.valueOf(topping.getText().toString().replaceAll(" ", "").toUpperCase()));
+                    pizza.add(Topping.valueOf(topping.getText().toString()
+                            .replaceAll(" ", "").toUpperCase()));
                 }
             }
         }
@@ -218,9 +236,6 @@ public class OrderViewActivity extends Activity {
         new AlertDialog.Builder(view.getContext())
                 .setTitle("Pizza Submission")
                 .setMessage("Are you sure you want to submit this entry?")
-
-                // Specifying a listener allows you to take an action before dismissing the dialog.
-                // The dialog is automatically dismissed when a dialog button is clicked.
                 .setPositiveButton(android.R.string.yes, (dialog, which) -> {
                     if(Constants.currentOrder == null) {
                         Constants.currentOrder = new Order();
@@ -231,5 +246,4 @@ public class OrderViewActivity extends Activity {
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
     }
-
 }

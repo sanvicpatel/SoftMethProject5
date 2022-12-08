@@ -41,6 +41,9 @@
     <string name="order_number_order">order number</string>
     <string name="order_total_display">Order Total $:</string>
     <string name="cancel_order">Cancel Order</string>
+    <string name="ru_pizza" />
+    <string name="ru_pizza_name">RU Pizza</string>
+    <string name="remove_instruction">CLICK PIZZA TO REMOVE FROM ORDER</string>
 
 
 </resources>

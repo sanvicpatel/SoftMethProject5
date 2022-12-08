@@ -2,20 +2,14 @@ package softmeth.rupizza;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 
 /**
  * Current Order Activity
@@ -75,7 +69,8 @@ public class CurrentOrderActivity extends Activity  {
         }
         Constants.orders.add(Constants.currentOrder);
         Constants.currentOrder = new Order();
-        list = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Constants.currentOrder.getPizzaList());
+        list = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
+                Constants.currentOrder.getPizzaList());
         updateOrder();
     }
 
@@ -87,7 +82,8 @@ public class CurrentOrderActivity extends Activity  {
     public void clearOrder(View view) {
         Constants.currentOrder = new Order(Constants.currentOrder);
         Constants.currentOrder.clear();
-        list = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Constants.currentOrder.getPizzaList());
+        list = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
+                Constants.currentOrder.getPizzaList());
         updateOrder();
 
         ((TextView) findViewById(R.id.orderNumberPH)).setText("");
@@ -97,11 +93,10 @@ public class CurrentOrderActivity extends Activity  {
      * Update the order and the asssociated ui elements.
      */
     private void updateOrder() {
-
         Log.e("UpdateOrder", Constants.currentOrder.getOrderNumber() + "");
 
         TextView orderNumDisplay = (TextView) findViewById(R.id.orderNumberPH);
-        orderNumDisplay.setText(Constants.currentOrder.getOrderNumber() + "");
+        orderNumDisplay.setText(String.format("%d", Constants.currentOrder.getOrderNumber()));
 
         pizzaOrdersDisplay.setAdapter(list);
 
@@ -113,11 +108,5 @@ public class CurrentOrderActivity extends Activity  {
 
         TextView orderTotalDisplay = (TextView) findViewById(R.id.orderTotalPlaceHolder);
         orderTotalDisplay.setText(Constants.currentOrder.getOrderTotal());
-
     }
-
-
-
-
-
 }

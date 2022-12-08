@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EF1535">
+    android:background="#0E251C">
 
     <TextView
         android:id="@+id/textView"
@@ -13,7 +13,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginEnd="64dp"
         android:backgroundTint="#E91E63"
-        android:fontFamily="sans-serif-smallcaps"
+        android:fontFamily="serif"
         android:includeFontPadding="true"
         android:text="@string/current_value"
         android:textAlignment="center"
@@ -22,12 +22,12 @@
         android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:typeface="serif"
+        app:drawableTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.039"
-        app:drawableTint="#FFFFFF" />
+        app:layout_constraintVertical_bias="0.039" />
 
     <LinearLayout
         android:id="@+id/orderNumBox"
@@ -94,8 +94,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="165dp"
-        android:layout_height="114dp"
+        android:layout_width="196dp"
+        android:layout_height="120dp"
         android:layout_marginBottom="10dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -181,5 +181,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/orderNumBox"
         app:layout_constraintVertical_bias="0.092" />
+
+    <TextView
+        android:id="@+id/removeInstruct"
+        android:layout_width="311dp"
+        android:layout_height="23dp"
+        android:text="@string/remove_instruction"
+        android:textAlignment="center"
+        android:textColor="#FAFAFA"
+        app:layout_constraintBottom_toTopOf="@+id/orderNumBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

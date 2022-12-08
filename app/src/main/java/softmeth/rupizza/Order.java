@@ -24,7 +24,7 @@ public class Order implements Customizeable{
     public Order() {
         orderNumber = currOrder++;
         pizzaList = new ArrayList<>();
-        orderTotal = 0;
+        orderTotal = Constants.EMPTY;
     }
 
     /**
@@ -36,15 +36,6 @@ public class Order implements Customizeable{
         this.pizzaList = (ArrayList<Pizza>) order.pizzaList.clone();
         this.orderNumber = order.getOrderNumber();
         this.orderTotal = order.getOrderTotalDouble();
-    }
-
-    /**
-     * Clears the order and initializes it as a new order.
-     */
-    public void newOrder() {
-        orderNumber = currOrder++;
-        pizzaList = new ArrayList<>();
-        orderTotal = 0;
     }
 
     /**
@@ -120,7 +111,7 @@ public class Order implements Customizeable{
      */
     public String getOrderSubTotal() {
         String output = String.format("%.2f",
-                ((int)(orderTotal * 100) / 100.0));
+                ((int)(orderTotal * Constants.ROUNDER) / Constants.ROUNDER));
         return output;
     }
 
@@ -131,7 +122,7 @@ public class Order implements Customizeable{
      */
     public String getOrderTotal() {
         String output = String.format("%.2f",
-                ((int)(orderTotal*(1+SALES_TAX) * 100) / 100.0));
+                ((int)(orderTotal*(1+SALES_TAX) * Constants.ROUNDER) / Constants.ROUNDER));
         return output;
     }
 
@@ -141,7 +132,7 @@ public class Order implements Customizeable{
      * @return Sales tax as a string.
      */
     public String getSalesTax() {
-        double total = ((int)(orderTotal*SALES_TAX * 100)) / 100.0;
+        double total = ((int)(orderTotal*SALES_TAX * Constants.ROUNDER)) / Constants.ROUNDER;
         return String.format("%.2f", total);
     }
 
@@ -150,10 +141,10 @@ public class Order implements Customizeable{
      */
     public void clear() {
 
-        while(pizzaList.size() > 0) {
-            pizzaList.remove(0);
+        while(pizzaList.size() > Constants.EMPTY) {
+            pizzaList.remove(Constants.EMPTY);
         }
-        this.orderTotal = 0;
+        this.orderTotal = Constants.EMPTY;
     }
 
 }

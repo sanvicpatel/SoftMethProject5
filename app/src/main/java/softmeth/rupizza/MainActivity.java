@@ -1,9 +1,7 @@
 package softmeth.rupizza;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -19,7 +17,6 @@ import java.util.ArrayList;
  * @author Ashrit Yarava, Sanvi Patel
  */
 public class MainActivity extends Activity implements RecyclerViewInterface {
-
     private ArrayList<PizzasModel> pizzaTypes = new ArrayList<>();
     private int[] imageIndexes = {
             R.drawable.chicagodeluxe,
@@ -41,13 +38,11 @@ public class MainActivity extends Activity implements RecyclerViewInterface {
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.main);
 
         setupRecyclerView();
-
     }
 
     /**
@@ -64,7 +59,6 @@ public class MainActivity extends Activity implements RecyclerViewInterface {
         PizzaRecyclerViewAdaptor adaptor = new PizzaRecyclerViewAdaptor(this, this.pizzaTypes, this);
         recycler.setAdapter(adaptor);
         recycler.setLayoutManager(new LinearLayoutManager(this));
-
     }
 
     /**
@@ -75,7 +69,7 @@ public class MainActivity extends Activity implements RecyclerViewInterface {
     @Override
     public void onItemClick(int position) {
         // Pizza options
-        if(position < this.pizzaTypes.size() - 2) { // Only the available pizza options.
+        if(position < this.pizzaTypes.size() - Constants.NUM_NONPIZZA_OPTIONS) {
             PizzasModel selectedPizza = this.pizzaTypes.get(position);
 
             Intent intent = new Intent(this, OrderViewActivity.class);
@@ -83,7 +77,7 @@ public class MainActivity extends Activity implements RecyclerViewInterface {
             startActivity(intent);
         }
 
-        else if(position == this.pizzaTypes.size()-2) {
+        else if(position == this.pizzaTypes.size() - Constants.NUM_NONPIZZA_OPTIONS) {
             Context context = getApplicationContext();
             CharSequence text = "Submit an order to continue.";
 
@@ -97,8 +91,10 @@ public class MainActivity extends Activity implements RecyclerViewInterface {
         }
 
         else {
-            if(Constants.orders == null || Constants.orders.getOrderIDList().size() == 0) {
-                Toast.makeText(getApplicationContext(), "No Orders to Display!", Toast.LENGTH_SHORT).show();
+            if(Constants.orders == null || Constants.orders.getOrderIDList().size()
+                    == Constants.EMPTY) {
+                Toast.makeText(getApplicationContext(), "No Orders to Display!",
+                        Toast.LENGTH_SHORT).show();
             } else {
                 Intent intent = new Intent(this, StoreOrderActivity.class);
                 startActivity(intent);

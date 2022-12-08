@@ -62,7 +62,8 @@ public class StoreOrderActivity extends Activity implements AdapterView.OnItemSe
         int idNum = (int) orderIdList.getSelectedItem();
         Order selectedOrder = Constants.orders.getOrderSelected(idNum);
         orderTotalDisplay.setText(selectedOrder.getOrderTotal());
-        list = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, selectedOrder.getPizzaList());
+        list = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
+                selectedOrder.getPizzaList());
         storeOrdersDisplay.setAdapter(list);
     }
 
@@ -82,21 +83,21 @@ public class StoreOrderActivity extends Activity implements AdapterView.OnItemSe
     public void removeOrder(View view) {
         int idNum = (int) orderIdList.getSelectedItem();
         Constants.orders.remove(Constants.orders.getOrderSelected(idNum));
-        if(Constants.orders.getOrderIDList().size() == 0) {
+        if(Constants.orders.getOrderIDList().size() == Constants.EMPTY) {
             onBackPressed();
         } else {
             adapter = new ArrayAdapter<>(this,
                     android.R.layout.simple_spinner_item, Constants.orders.getOrderIDList());
             orderIdList.setAdapter(adapter);
-            orderIdList.setSelection(0);
-            idNum = (int) orderIdList.getSelectedItem();
-            Order selectedOrder = Constants.orders.getOrderSelected(idNum);
+            orderIdList.setSelection(Constants.EMPTY);
+            int idNumber = (int) orderIdList.getSelectedItem();
+            Order selectedOrder = Constants.orders.getOrderSelected(idNumber);
             orderTotalDisplay.setText(selectedOrder.getOrderTotal());
-            list = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, selectedOrder.getPizzaList());
+            list = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
+                    selectedOrder.getPizzaList());
             storeOrdersDisplay.setAdapter(list);
         }
-        Toast.makeText(getApplicationContext(), "Removed Order: " + idNum, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Removed Order: " + idNum,
+                Toast.LENGTH_SHORT).show();
     }
-
-
 }

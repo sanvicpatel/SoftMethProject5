@@ -17,11 +17,11 @@ import java.util.ArrayList;
  *
  * @author Ashrit Yarava, Sanvi Patel
  */
-public class PizzaRecyclerViewAdaptor extends RecyclerView.Adapter<PizzaRecyclerViewAdaptor.ViewHandler> {
-
-    Context context;
-    ArrayList<PizzasModel> pizzas;
-    RecyclerViewInterface viewInterface;
+public class PizzaRecyclerViewAdaptor extends
+        RecyclerView.Adapter<PizzaRecyclerViewAdaptor.ViewHandler> {
+    private Context context;
+    private ArrayList<PizzasModel> pizzas;
+    private RecyclerViewInterface viewInterface;
 
     /**
      * The Adaptor constructor.
@@ -30,7 +30,8 @@ public class PizzaRecyclerViewAdaptor extends RecyclerView.Adapter<PizzaRecycler
      * @param pizzas The pizzas.
      * @param viewInterface The view interface.
      */
-    public PizzaRecyclerViewAdaptor(Context context, ArrayList<PizzasModel> pizzas, RecyclerViewInterface viewInterface) {
+    public PizzaRecyclerViewAdaptor(Context context, ArrayList<PizzasModel> pizzas,
+                                    RecyclerViewInterface viewInterface) {
         this.context = context;
         this.pizzas = pizzas;
         this.viewInterface = viewInterface;
@@ -45,7 +46,8 @@ public class PizzaRecyclerViewAdaptor extends RecyclerView.Adapter<PizzaRecycler
      */
     @NonNull
     @Override
-    public PizzaRecyclerViewAdaptor.ViewHandler onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PizzaRecyclerViewAdaptor.ViewHandler onCreateViewHolder(@NonNull ViewGroup parent,
+                                                                   int viewType) {
 
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.recycler_layout, parent, false);
@@ -61,7 +63,8 @@ public class PizzaRecyclerViewAdaptor extends RecyclerView.Adapter<PizzaRecycler
      * @param position The position.
      */
     @Override
-    public void onBindViewHolder(@NonNull PizzaRecyclerViewAdaptor.ViewHandler holder, int position) {
+    public void onBindViewHolder(@NonNull PizzaRecyclerViewAdaptor.ViewHandler holder,
+                                 int position) {
         holder.getPizzaName().setText(this.pizzas.get(position).getPizzaName());
         holder.getPizzaImage().setImageResource(this.pizzas.get(position).getImage());
     }
@@ -77,7 +80,7 @@ public class PizzaRecyclerViewAdaptor extends RecyclerView.Adapter<PizzaRecycler
     }
 
     /**
-     * The View Handler.
+     * The View Handler inner class.
      *
      * @author Ashrit Yarava, Sanvi Patel
      */
@@ -106,7 +109,6 @@ public class PizzaRecyclerViewAdaptor extends RecyclerView.Adapter<PizzaRecycler
                     }
                 }
             });
-
         }
 
         /**
@@ -127,5 +129,4 @@ public class PizzaRecyclerViewAdaptor extends RecyclerView.Adapter<PizzaRecycler
             return pizzaName;
         }
     }
-
 }
