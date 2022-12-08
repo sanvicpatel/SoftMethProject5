@@ -28,6 +28,19 @@
     <string name="ordertotalplace">orderTotalPlace</string>
     <string name="currentOrderActivityName">Current Order</string>
     <string name="storeOrderActivityName">Store Order</string>
+    <string name="order_number">"ORDER NUMBER: "</string>
+    <string name="current_value">Current Order</string>
+    <string name="place_order">Place Order</string>
+    <string name="clear_order">Clear Order</string>
+    <string name="subtotal">Subtotal: $</string>
+    <string name="spaces">"   "</string>
+    <string name="sales_tax">Sales Tax: $</string>
+    <string name="order_total_1">Order Total: $</string>
+    <string name="store_orders">Store Orders</string>
+    <string name="order_number_orders">Order Number:</string>
+    <string name="order_number_order">order number</string>
+    <string name="order_total_display">Order Total $:</string>
+    <string name="cancel_order">Cancel Order</string>
 
 
 </resources>

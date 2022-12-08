@@ -1,6 +1,7 @@
 package com.example.rupizza;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,15 +14,24 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+/**
+ * The Order View Activity for the current order.
+ *
+ * @author Ashrit Yarava, Sanvi Patel
+ */
 public class OrderViewActivity extends Activity {
 
-    Intent intent;
-    TextView pizzaName, orderTotal;
-    Spinner pizzaSize;
-    Pizza pizza;
-    ArrayList<CheckBox> toppings = new ArrayList<>();
+    private Intent intent;
+    private TextView pizzaName, orderTotal;
+    private Spinner pizzaSize;
+    private Pizza pizza;
+    private ArrayList<CheckBox> toppings = new ArrayList<>();
 
-
+    /**
+     * The On create method for the Order View.
+     *
+     * @param savedInstanceState The saved instance state.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,11 +84,17 @@ public class OrderViewActivity extends Activity {
 
     }
 
+    /**
+     * Setup the pizza name.
+     */
     private void setupPizzaName() {
         String pizza = intent.getStringExtra("pizzaname");
         pizzaName.setText(pizza);
     }
 
+    /**
+     * Setup the toppinigs checkboxes.
+     */
     private void setupToppings() {
         for(CheckBox topping: toppings) {
             topping.setClickable(false);
@@ -115,6 +131,11 @@ public class OrderViewActivity extends Activity {
         }
     }
 
+    /**
+     * Manage the buttons, check off the right elements.
+     *
+     * @param view The view.
+     */
     public void manageButtons(View view) {
         int numSelected = 0;
         for(CheckBox topping: toppings) {
@@ -132,10 +153,16 @@ public class OrderViewActivity extends Activity {
         createPizza();
     }
 
+    /**
+     * Change the size of the pizza.
+     */
     public void changeSize() {
         createPizza();
     }
 
+    /**
+     * Create the pizza with the given options.
+     */
     private void createPizza() {
         Size size = Size.valueOf(((String) pizzaSize.getSelectedItem()).toUpperCase());
         switch (pizzaName.getText().toString()) {
@@ -170,6 +197,9 @@ public class OrderViewActivity extends Activity {
         orderTotal.setText("$" + pizza.getSubtotal());
     }
 
+    /**
+     * Enable only the selected toppings.
+     */
     private void selectedToppings() {
         if(pizzaName.getText().toString().equals("Chicago Build Your Own") || pizzaName.getText().toString().equals("New York Build Your Own") ) {
             for (CheckBox topping : toppings) {
@@ -180,15 +210,27 @@ public class OrderViewActivity extends Activity {
         }
     }
 
+    /**
+     * Submit the order. Button event handler.
+     *
+     * @param view The view.
+     */
     public void submitOrder(View view) {
-        Toast.makeText(view.getContext(), "Added Pizza To Order!", Toast.LENGTH_SHORT).show();
+        new AlertDialog.Builder(view.getContext())
+                .setTitle("Pizza Submission")
+                .setMessage("Are you sure you want to submit this entry?")
 
-        if(Constants.currentOrder == null) {
-            Constants.currentOrder = new Order();
-            Toast.makeText(view.getContext(), "Created new order", Toast.LENGTH_SHORT).show();
-        }
-
-        Constants.currentOrder.add(pizza);
+                // Specifying a listener allows you to take an action before dismissing the dialog.
+                // The dialog is automatically dismissed when a dialog button is clicked.
+                .setPositiveButton(android.R.string.yes, (dialog, which) -> {
+                    if(Constants.currentOrder == null) {
+                        Constants.currentOrder = new Order();
+                    }
+                    Constants.currentOrder.add(pizza);
+                })
+                .setNegativeButton(android.R.string.no, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 
 }

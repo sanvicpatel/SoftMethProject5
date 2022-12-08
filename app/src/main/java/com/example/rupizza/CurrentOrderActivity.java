@@ -19,12 +19,19 @@ import java.util.ArrayList;
 
 /**
  * Current Order Activity
+ *
+ * @author Ashrit Yarava, Sanvi Patel
  */
 public class CurrentOrderActivity extends Activity  {
 
     private ListView pizzaOrdersDisplay;
     private ArrayAdapter<Pizza> list;
 
+    /**
+     * The On create method for the activity.
+     *
+     * @param savedInstanceState The saved instance state.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,11 +47,21 @@ public class CurrentOrderActivity extends Activity  {
         updateOrder();
     }
 
+    /**
+     * Remove the order.
+     *
+     * @param pizzaToRemove The pizza to remove.
+     */
     public void removeOrder(Pizza pizzaToRemove) {
         Constants.currentOrder.remove(pizzaToRemove);
         updateOrder();
     }
 
+    /**
+     * Place the order.
+     *
+     * @param view The view.
+     */
     public void placeOrder(View view) {
         if(Constants.currentOrder.isEmpty()) {
             Context context = getApplicationContext();
@@ -62,6 +79,11 @@ public class CurrentOrderActivity extends Activity  {
         updateOrder();
     }
 
+    /**
+     * Clear order.
+     *
+     * @param view The view.
+     */
     public void clearOrder(View view) {
         Constants.currentOrder = new Order(Constants.currentOrder);
         Constants.currentOrder.clear();
@@ -71,6 +93,9 @@ public class CurrentOrderActivity extends Activity  {
         ((TextView) findViewById(R.id.orderNumberPH)).setText("");
     }
 
+    /**
+     * Update the order and the asssociated ui elements.
+     */
     private void updateOrder() {
 
         Log.e("UpdateOrder", Constants.currentOrder.getOrderNumber() + "");

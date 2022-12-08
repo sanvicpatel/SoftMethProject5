@@ -12,12 +12,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+/**
+ * The Pizza Recycler View Adaptor for the Recycler View.
+ *
+ * @author Ashrit Yarava, Sanvi Patel
+ */
 public class PizzaRecyclerViewAdaptor extends RecyclerView.Adapter<PizzaRecyclerViewAdaptor.ViewHandler> {
 
     Context context;
     ArrayList<PizzasModel> pizzas;
     RecyclerViewInterface viewInterface;
 
+    /**
+     * The Adaptor constructor.
+     *
+     * @param context The context.
+     * @param pizzas The pizzas.
+     * @param viewInterface The view interface.
+     */
     public PizzaRecyclerViewAdaptor(Context context, ArrayList<PizzasModel> pizzas, RecyclerViewInterface viewInterface) {
         this.context = context;
         this.pizzas = pizzas;
@@ -71,13 +83,14 @@ public class PizzaRecyclerViewAdaptor extends RecyclerView.Adapter<PizzaRecycler
      */
     public static class ViewHandler extends RecyclerView.ViewHolder {
 
-        ImageView pizzaImage;
-        TextView pizzaName;
+        private ImageView pizzaImage;
+        private TextView pizzaName;
 
         /**
          * The view handler constructor.
          *
          * @param itemView The view.
+         * @param viewInterface the view interface.
          */
         public ViewHandler(@NonNull View itemView, RecyclerViewInterface viewInterface) {
             super(itemView);

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/recycler_margin">
+    android:layout_marginStart="@dimen/recycler_margin"
+    android:layout_marginEnd="@dimen/recycler_margin">
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
@@ -37,7 +38,7 @@
 
             <TextView
                 android:id="@+id/pizza_name"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:fontFamily="serif"
                 android:gravity="center|center_vertical"
@@ -48,10 +49,10 @@
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.269"
                 app:layout_constraintStart_toEndOf="@+id/pizza_image"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.0"
+                tools:gravity="center" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

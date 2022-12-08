@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-smallcaps"
-        android:text="Store Orders"
+        android:text="@string/store_orders"
         android:textAlignment="center"
         android:textColor="#E6E6E6"
         android:textSize="60sp"
@@ -39,7 +39,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="Order Number: "
+            android:text="@string/order_number_orders"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="34sp" />
@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:contentDescription="order number" />
+            android:contentDescription="@string/order_number_order" />
 
     </LinearLayout>
 
@@ -69,7 +69,7 @@
             android:layout_width="26dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Order Total $: "
+            android:text="@string/order_total_display"
             android:textAlignment="viewEnd"
             android:textColor="#FFFFFF"
             android:textSize="24sp" />
@@ -87,7 +87,8 @@
         android:id="@+id/CancelOrder"
         android:layout_width="147dp"
         android:layout_height="59dp"
-        android:text="Cancel Order"
+        android:onClick="removeOrder"
+        android:text="@string/cancel_order"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

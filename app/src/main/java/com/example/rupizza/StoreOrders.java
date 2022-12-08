@@ -80,33 +80,4 @@ public class StoreOrders implements Customizeable{
         return null;
     }
 
-    /**
-     * Export the orders to a txt file.
-     */
-    public void exportOrders() {
-
-        try {
-            File file = new File("Store Orders.txt");
-            file.createNewFile();
-            PrintWriter writer = new PrintWriter(file);
-
-            for(Order order: orderList) {
-                writer.println("Order Number: " + order.getOrderNumber());
-                for(Pizza pizza: order.getPizzaList()) {
-                    writer.println("\t" + pizza);
-                }
-                writer.println("Order Total: " + order.getOrderTotal());
-            }
-
-            writer.flush();
-            writer.close();
-
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
 }
