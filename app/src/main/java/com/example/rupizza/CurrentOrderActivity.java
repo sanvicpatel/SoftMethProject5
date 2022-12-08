@@ -22,24 +22,30 @@ import java.util.ArrayList;
  */
 public class CurrentOrderActivity extends Activity  {
 
-    private ArrayList<Pizza> pizzaList;
     private ListView pizzaOrdersDisplay;
+    private ArrayAdapter<Pizza> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.current_order);
 
+        list = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Constants.currentOrder.getPizzaList());
+
+        pizzaOrdersDisplay = (ListView) findViewById(R.id.pizzaOrdersDisplay);
+        pizzaOrdersDisplay.setAdapter(list);
+
+        pizzaOrdersDisplay.setOnItemClickListener((adapterView, view, i, l) -> removeOrder(list.getItem(i)));
+
         updateOrder();
     }
 
-    public void removeOrder() {
-        Pizza pizzaToRemove = (Pizza) pizzaOrdersDisplay.getSelectedItem();
+    public void removeOrder(Pizza pizzaToRemove) {
         Constants.currentOrder.remove(pizzaToRemove);
         updateOrder();
     }
 
-    public void placeOrder() {
+    public void placeOrder(View view) {
         if(Constants.currentOrder.isEmpty()) {
             Context context = getApplicationContext();
             CharSequence text = "Submit an order to continue.";
@@ -52,30 +58,31 @@ public class CurrentOrderActivity extends Activity  {
         updateOrder();
     }
 
-    public void clearOrder() {
-        Constants.currentOrder = new Order();
+    public void clearOrder(View view) {
+        Constants.currentOrder = new Order(Constants.currentOrder);
+        Constants.currentOrder.clear();
+        list = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Constants.currentOrder.getPizzaList());
         updateOrder();
 
-        ((TextView) findViewById(R.id.orderNumberPH)).setText(" ");
+        ((TextView) findViewById(R.id.orderNumberPH)).setText("");
     }
 
     private void updateOrder() {
-        pizzaList = Constants.currentOrder.getPizzaList();
+
+
+        Log.e("UpdateOrder", Constants.currentOrder.getOrderNumber() + "");
 
         TextView orderNumDisplay = (TextView) findViewById(R.id.orderNumberPH);
-        orderNumDisplay.setText(Constants.currentOrder.getOrderNumber());
+        orderNumDisplay.setText(Constants.currentOrder.getOrderNumber() + "");
 
-        pizzaOrdersDisplay = (ListView) findViewById(R.id.pizzaOrdersDisplay);
-        pizzaOrdersDisplay.setAdapter(null);
-        ArrayAdapter<Pizza> list = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, pizzaList);
         pizzaOrdersDisplay.setAdapter(list);
 
         TextView subtotalDisplay = (TextView) findViewById(R.id.subtotalPlaceHolder);
         subtotalDisplay.setText(Constants.currentOrder.getOrderSubTotal());
-
+//
         TextView salesTaxDisplay = (TextView) findViewById(R.id.salesTaxPlaceHolder);
         salesTaxDisplay.setText(Constants.currentOrder.getSalesTax());
-
+//
         TextView orderTotalDisplay = (TextView) findViewById(R.id.orderTotalPlaceHolder);
         orderTotalDisplay.setText(Constants.currentOrder.getOrderTotal());
     }

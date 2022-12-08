@@ -69,14 +69,12 @@ public class MainActivity extends Activity implements RecyclerViewInterface {
             CharSequence text = "Submit an order to continue.";
 
            if(Constants.currentOrder == null || Constants.currentOrder.isEmpty()) {
-
                 Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
-                return;
+           } else {
+               Intent intent = new Intent(this, CurrentOrderActivity.class);
+               Toast.makeText(context, "coming here", Toast.LENGTH_SHORT).show();
+               startActivity(intent);
            }
-
-           Intent intent = new Intent(this, CurrentOrderActivity.class);
-           Toast.makeText(context, "coming here", Toast.LENGTH_SHORT).show();
-           startActivity(intent);
         }
 
         // Store Order
