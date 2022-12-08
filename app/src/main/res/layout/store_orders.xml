@@ -75,30 +75,13 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/orderTotalStoreDisplay"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textAlignment="center"
             android:textColor="#FFFFFF" />
     </LinearLayout>
-
-    <EditText
-        android:id="@+id/storeOrdersText"
-        android:layout_width="364dp"
-        android:layout_height="260dp"
-        android:ems="10"
-
-        android:inputType="textMultiLine"
-        android:text="Store Orders Will Appear Here"
-        
-        android:textColor="#D8D8D8"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.177" />
 
     <Button
         android:id="@+id/CancelOrder"
@@ -108,5 +91,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/storeOrdersText" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.959" />
+
+    <ListView
+        android:id="@+id/storeOrdersDisplay"
+        android:layout_width="340dp"
+        android:layout_height="336dp"
+        app:layout_constraintBottom_toTopOf="@+id/CancelOrder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -53,8 +53,12 @@ public class CurrentOrderActivity extends Activity  {
             return;
         }
 
+        if(Constants.orders == null) {
+            Constants.orders = new StoreOrders();
+        }
         Constants.orders.add(Constants.currentOrder);
         Constants.currentOrder = new Order();
+        list = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Constants.currentOrder.getPizzaList());
         updateOrder();
     }
 

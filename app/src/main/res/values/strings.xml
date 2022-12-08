@@ -27,6 +27,7 @@
     <string name="salestaxplace">salesTaxPlace</string>
     <string name="ordertotalplace">orderTotalPlace</string>
     <string name="currentOrderActivityName">Current Order</string>
+    <string name="storeOrderActivityName">Store Order</string>
 
 
 </resources>

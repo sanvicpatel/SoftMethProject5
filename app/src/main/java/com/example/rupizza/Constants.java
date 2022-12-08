@@ -4,5 +4,5 @@ import java.util.ArrayList;
 
 public class Constants {
     public static Order currentOrder;
-    public static ArrayList<Order> orders;
+    public static StoreOrders orders;
 }
